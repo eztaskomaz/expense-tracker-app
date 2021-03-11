@@ -11,7 +11,7 @@ const useTransactions = (title) => {
     const categories = title === 'Income' ? incomeCategories : expenseCategories;
 
     transactionsPerType.forEach((t) => {
-        const category = categories.find(c => c.type === t.categories);
+        const category = categories.find(c => c.type === t.category);
         if(category) {
             category.amount += t.amount;
         }
