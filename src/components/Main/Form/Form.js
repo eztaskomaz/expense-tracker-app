@@ -72,9 +72,9 @@ const Form = () => {
                 createTransaction();
             }
         }
-    }, [segment])
+    }, [segment]);
 
-    const selectedCategories = formData === 'Income' ? incomeCategories : expenseCategories;
+    const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories;
 
     return (
         <Grid container spacing={2}>
@@ -87,7 +87,7 @@ const Form = () => {
             <Grid item xs={6}>
                 <FormControl fullWidth>
                     <InputLabel>Type</InputLabel>
-                    <Select value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})}>
+                    <Select value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })}>
                         <MenuItem value="Income">Income</MenuItem>
                         <MenuItem value="Expense">Expense</MenuItem>
                     </Select>
@@ -96,7 +96,7 @@ const Form = () => {
             <Grid item xs={6}>
                 <FormControl fullWidth>
                     <InputLabel>Category</InputLabel>
-                    <Select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})}>
+                    <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
                         {selectedCategories.map((c) => <MenuItem key={c.type} value={c.type}>{c.type}</MenuItem>)}
                     </Select>
                 </FormControl>
@@ -109,7 +109,7 @@ const Form = () => {
             </Grid>
             <Button className={classes.button} variant="outlined" color="primary" fullWidth onClick={createTransaction}>Create</Button>
         </Grid>
-    )
+    );
 };
 
 export default Form;
